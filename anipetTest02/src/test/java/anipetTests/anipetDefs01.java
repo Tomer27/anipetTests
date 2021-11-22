@@ -21,7 +21,7 @@ static WebDriver driver;
 		return signInBtn;
 	}
 	
-	// search field @ home page
+	// search field @ home pages
 	static public WebElement srchFld(WebDriver driver) {
 		WebElement srchFld = driver.findElement(By.xpath("//*[@id=\"searchform\"]/input"));
 		return srchFld;

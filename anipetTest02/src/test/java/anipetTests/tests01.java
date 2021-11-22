@@ -42,7 +42,6 @@ public class tests01 {
 		driver.quit();
 	}
 
-	@org.junit.jupiter.api.Tag("title")
 	@Test
 	public void titleTest() {
 		String title = driver.getTitle();
