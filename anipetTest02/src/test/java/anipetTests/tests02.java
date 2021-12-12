@@ -1,5 +1,6 @@
 package anipetTests;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -96,5 +97,76 @@ public class tests02 {
 		anipetDefs01.homePageBtn(driver).click();
 		Thread.sleep(500);
 	}
+	
+	@Test
+	public void searchResultsValidation() throws InterruptedException {
+		anipetDefs01.homePageBtn(driver).click();
+		Thread.sleep(500);
+		anipetDefs01.srchFld(driver).sendKeys(srchObject);
+		anipetDefs01.srchBtn(driver).click();
+		Thread.sleep(500);
+		for (int j = 0; j < anipetDefs01.resPages(driver).size()-1; j++) {
+			for (int i = 0; i < anipetDefs01.results(driver).size(); i++) {
+				String resX = anipetDefs01.results(driver).get(i).getText();
+				if (resX.contains(srchObject)) {
+					continue;
+				}else {
+					System.out.println(resX + " isn't relevant to the search");
+					break;
+				}
+			}
+			try {
+				for (int q = 0; q < anipetDefs01.resPages(driver).size(); q++) {
+					String pageX = anipetDefs01.resPages(driver).get(q).getText();
+					if (pageX.equals(nextPageSign)) {
+						anipetDefs01.resPages(driver).get(q).click();
+					}else {
+						continue;
+					}
+				}
+			} catch (Exception e) {
+				
+			}			
+		}
+		anipetDefs01.homePageBtn(driver).click();
+		Thread.sleep(500);
+	}
+	
+	@Test
+	public void finalPaymentTest() throws InterruptedException {
+		anipetDefs01.homePageBtn(driver).click();
+		Thread.sleep(500);
+		anipetDefs01.mainNavBar(driver).get(1).click();
+		Thread.sleep(100);
+		anipetDefs01.dogDisc(driver).click();
+		Thread.sleep(100);
+		int sumBuy = 0;
+		for (int i = 0; i < 3; i++) {
+			String priceStr = anipetDefs01.itemsListPrices(driver).get(i).getText().replace("¤", "");
+			int price = Integer.parseInt(priceStr);
+			sumBuy += price;
+		}
+		System.out.println("Expected sum of the first 3 items: " + sumBuy + "¤");
+		for (int i = 0; i < 3; i++) {
+			anipetDefs01.add2CartBtns(driver).get(i).click();
+			Thread.sleep(1200);
+			anipetDefs01.cartXBtn(driver).click();
+			Thread.sleep(1200);
+		}
+		Thread.sleep(1000);
+		anipetDefs01.mainNavBar(driver).get(8).click();
+		Thread.sleep(2000);
+		String totalPayStr = anipetDefs01.totalPayment(driver).getText().replace("¤", "").replace(".00", "");
+		int totalPay = Integer.parseInt(totalPayStr);
+		System.out.println("Actual sum of the first 3 items: " + totalPay + "¤");
+		anipetDefs01.cartXBtn(driver).click();
+		Thread.sleep(1000);
+		anipetDefs01.homePageBtn(driver).click();
+		assertEquals(sumBuy, totalPay);
+		Thread.sleep(500);
+	}
+	
+//	@Test
+//	public void test() throws InterruptedException {}
 
 }
