@@ -325,4 +325,9 @@ static WebDriver driver;
 		return branchPhoneNums;
 	}
 	
+	static public List<WebElement> pics(WebDriver driver) {
+		List<WebElement> pics = driver.findElements(By.xpath("//*[@id=\"mainapp\"]/div[6]/div/div[2]/div[2]/child::a"));
+		return pics;
+	}
+	
 }
