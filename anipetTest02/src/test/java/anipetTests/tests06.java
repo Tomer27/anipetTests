@@ -31,6 +31,12 @@ public class tests06 {
 	static int freeShipY = 248;
 	static int searchFieldX = 246;
 	static int searchFieldY = 36;
+	static int animalsPicHeight = 363;
+	static int animalsPicWidth = 970;
+	static int ctgryBox1Height = 230;
+	static int ctgryBox1Width = 500;
+	static int ctgryBox2Height = 310;
+	static int ctgryBox2Width = 250;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -187,6 +193,52 @@ public class tests06 {
 		System.out.println("---------------------------------");
 		Thread.sleep(500);
 		
+	}
+	
+	@Test
+	public void heightAndWidthOfElements() throws InterruptedException {
+		int APH = anipetDefs01.animalsPic(driver).getSize().getHeight();
+		int APW = anipetDefs01.animalsPic(driver).getSize().getWidth();
+		if (APH == animalsPicHeight && APW == animalsPicWidth) {
+			System.out.println("The animals picture height & width are GOOD");
+		}else if (APH == animalsPicHeight && APW != animalsPicWidth) {
+			System.out.println("The animals picture width is BAD");
+		}else if (APH != animalsPicHeight && APW == animalsPicWidth) {
+			System.out.println("The animals picture height is BAD");
+		}else {
+			System.out.println("The animals picture height & width are BAD");
+		}
+		
+		for (int i = 0; i < anipetDefs01.ctgryBoxes(driver).size()-4; i++) {
+			int h = anipetDefs01.ctgryBoxes(driver).get(i).getSize().getHeight();
+			int w = anipetDefs01.ctgryBoxes(driver).get(i).getSize().getWidth();
+			if (h == ctgryBox1Height && w == ctgryBox1Width) {
+				System.out.println("Category box #" + (i+1) + " height & width are GOOD");
+			}else if (h == ctgryBox1Height && w != ctgryBox1Width) {
+				System.out.println("Category box #" + (i+1) + " width is BAD");
+			}else if (h != ctgryBox1Height && w == ctgryBox1Width) {
+				System.out.println("Category box #" + (i+1) + " height is BAD");
+			}else {
+				System.out.println("Category box #" + (i+1) + " height & width are BAD");
+			}
+		}
+		
+		for (int i = 2; i < anipetDefs01.ctgryBoxes(driver).size(); i++) {
+			int h = anipetDefs01.ctgryBoxes(driver).get(i).getSize().getHeight();
+			int w = anipetDefs01.ctgryBoxes(driver).get(i).getSize().getWidth();
+			if (h == ctgryBox2Height && w == ctgryBox2Width) {
+				System.out.println("Category box #" + (i+1) + " height & width are GOOD");
+			}else if (h == ctgryBox2Height && w != ctgryBox2Width) {
+				System.out.println("Category box #" + (i+1) + " width is BAD");
+			}else if (h != ctgryBox2Height && w == ctgryBox2Width) {
+				System.out.println("Category box #" + (i+1) + " height is BAD");
+			}else {
+				System.out.println("Category box #" + (i+1) + " height & width are BAD");
+			}
+		}
+		
+		System.out.println("---------------------------------");
+		Thread.sleep(500);
 	}
 	
 	

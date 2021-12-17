@@ -51,6 +51,24 @@ static WebDriver driver;
 		return srchBtn;
 	}
 	
+	// big picture with animals @ home page
+	static public WebElement animalsPic(WebDriver driver) {
+		WebElement animalsPic = driver.findElement(By.xpath("//*[@id=\"mainCarousel\"]/div/div/a/img"));
+		return animalsPic;
+	}
+	
+	// category boxes @ home page
+	static public List<WebElement> ctgryBoxes(WebDriver driver) {
+		List<WebElement> ctgryBoxes = driver.findElements(By.xpath("//*[@id=\"mainapp\"]/div[6]/div/div[4]/child::div"));
+		return ctgryBoxes;
+	}
+	
+	// branches map @ home page
+	static public WebElement branchMap(WebDriver driver) {
+		WebElement branchMap = driver.findElement(By.xpath(""));
+		return branchMap;
+	}
+	
 	// locate branch button @ home page
 	static public WebElement locBranBtn(WebDriver driver) {
 		WebElement locBranBtn = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[2]/div[2]/div[1]/div/div[2]/div/ul/li[4]/a"));
