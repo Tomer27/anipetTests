@@ -48,6 +48,14 @@
     <version>5.0.0</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.webjars.npm/point-geometry -->
+<dependency>
+    <groupId>org.webjars.npm</groupId>
+    <artifactId>point-geometry</artifactId>
+    <version>0.0.0</version>
+</dependency>
+
+
     </dependencies>
   
 </project>

@@ -15,6 +15,18 @@ static WebDriver driver;
 		 return homePageBtn;
 	}
 	
+	// list of top options bar @ home page
+	static public List<WebElement> topBar(WebDriver driver) {
+		List<WebElement> topBar = driver.findElements(By.xpath("//*[@id=\"mainapp\"]/div[2]/div[2]/div[1]/div/div[2]/div/ul/child::li/a"));
+		return topBar;
+	}
+	
+	// top options bar div @ home page
+	static public WebElement topBarDiv(WebDriver driver) {
+		WebElement topBarDiv = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[2]/div[2]/div[1]/div/div[2]/div/ul"));
+		return topBarDiv;
+	}
+	
 	// sign up button @ home page
 	static public WebElement signUpBtn(WebDriver driver) {
 		WebElement signUpBtn = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[2]/div[2]/div[1]/div/div[2]/div/ul/li[2]/a"));
@@ -51,10 +63,28 @@ static WebDriver driver;
 		return mainNavBar;
 	}
 	
+	// navigation bar div @ home page
+	static public WebElement mainNavBarDiv(WebDriver driver) {
+		WebElement mainNavBarDiv = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[2]/div[2]/div[2]"));
+		return mainNavBarDiv;
+	}
+	
 	// free shipping check button @ home page
 	static public WebElement freeShippingBtn(WebDriver driver) {
 		WebElement freeShippingBtn = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[4]/div/a"));
 		return freeShippingBtn;
+	}
+	
+	// 1st free shipping div @ home page
+	static public WebElement freeShippingDiv1(WebDriver driver) {
+		WebElement freeShippingDiv = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[4]"));
+		return freeShippingDiv;
+	}
+	
+	// 2nd free shipping div @ home page
+	static public WebElement freeShippingDiv2(WebDriver driver) {
+		WebElement freeShippingDiv2 = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[7]"));
+		return freeShippingDiv2;
 	}
 	
 	// list of brand links @ home page
@@ -84,6 +114,12 @@ static WebDriver driver;
 	static public List<WebElement> socialMediaBtnList(WebDriver driver) {
 		List<WebElement> socialMediaBtnList = driver.findElements(By.xpath("//*[@id=\"mainapp\"]/div[9]/footer/div/section[4]/ul/li[2]/child::a"));
 		return socialMediaBtnList;
+	}
+	
+	// footer div @ bottom of the home page
+	static public WebElement homeFooter(WebDriver driver) {
+		WebElement homeFooter = driver.findElement(By.xpath("//*[@id=\"mainapp\"]/div[9]"));
+		return homeFooter;
 	}
 	
 	// first name field @ sign up window
